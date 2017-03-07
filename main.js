@@ -1,8 +1,8 @@
 const GameData = {
 	randomSequence: [],
 	userSequence: [],
-	randomSequenceRunning: false;
-	gameOn: false;
+	randomSequenceRunning: false,
+	gameOn: false,
 	successfulSequences: 0,
 	buttonIds: ["button-1", "button-2", "button-3", "button-4"],
 
@@ -44,6 +44,50 @@ const GameData = {
 	},
 	clearSuccessful: function() {
 		this.successfulSequences = 0;
+	}
+};
+
+// const AppControl = {
+// 	runRandom: function() {
+// 		if (GameData.gameOn === true){
+// 			GameData.randomSequenceRunning = true;
+// 			for (var i = 0; i < GameData.randomSequence.length; i++) {
+// 				setTimeout(function(x) {
+// 					return function(){
+// 						if (GameData.randomSequence[x] === 1) {
+
+// 						}
+// 					}
+// 				}(i), 1000*i)
+// 			}
+// 		}
+// 	}
+// };
+
+const ViewControl = {
+	lightButtonOne: function() {
+		$("#button-1").css("background", "lightblue");
+		setTimeout(function() {
+			$("#button-1").css("background", "blue");
+		}, 300);
+	},
+	lightButtonTwo: function() {
+		$("#button-2").css("background", "red");
+		setTimeout(function() {
+			$("#button-2").css("background", "darkred");
+		}, 300);
+	},
+	lightButtonThree: function() {
+		$("#button-3").css("background", "lightgreen");
+		setTimeout(function() {
+			$("#button-3").css("background", "green");
+		}, 300);
+	},
+	lightButtonFour: function() {
+		$("#button-4").css("background", "lightyellow");
+		setTimeout(function() {
+			$("#button-4").css("background", "yellow");
+		}, 300);
 	}
 };
 
