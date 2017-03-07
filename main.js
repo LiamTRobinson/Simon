@@ -4,7 +4,6 @@ const GameData = {
 	randomSequenceRunning: false,
 	gameOn: false,
 	successfulSequences: 0,
-	buttonIds: ["button-1", "button-2", "button-3", "button-4"],
 
 	addToRandom: function() {
 		var randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -47,22 +46,35 @@ const GameData = {
 	}
 };
 
-// const AppControl = {
-// 	runRandom: function() {
-// 		if (GameData.gameOn === true){
-// 			GameData.randomSequenceRunning = true;
-// 			for (var i = 0; i < GameData.randomSequence.length; i++) {
-// 				setTimeout(function(x) {
-// 					return function(){
-// 						if (GameData.randomSequence[x] === 1) {
-
-// 						}
-// 					}
-// 				}(i), 1000*i)
-// 			}
-// 		}
-// 	}
-// };
+const AppControl = {
+	runRandom: function() {
+		if (GameData.gameOn === true){
+			GameData.randomSequenceRunning = true;
+			var stopTime = 0;
+			for (var i = 0; i < GameData.randomSequence.length; i++) {
+				stopTime += 1;
+				setTimeout(function(x) {
+					return function(){
+						if (GameData.randomSequence[x] === 1) {
+							ViewControl.lightButtonOne();
+						}
+						else if (GameData.randomSequence[x] === 2) {
+							ViewControl.lightButtonTwo();
+						}
+						else if (GameData.randomSequence[x] === 3) {
+							ViewControl.lightButtonThree();
+						}
+						else if (GameData.randomSequence[x] === 4) {
+							ViewControl.lightButtonFour();
+						}
+					}
+				}(i), 1000*i)
+			}
+			setTimeout(function(){GameData.randomSequenceRunning = false;}, 1010*stopTime)
+		}
+	},
+	
+};
 
 const ViewControl = {
 	lightButtonOne: function() {
