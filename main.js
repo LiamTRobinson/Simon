@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 const GameData = {
 	randomSequence: [],
 	userSequence: [],
@@ -105,29 +112,37 @@ const AppControl = {
 
 const ViewControl = {
 	lightButtonOne: function() {
+		var audioOne = new Audio("sounds/ButtonOne.m4a");
 		$("#button-1").css("background", "lightblue");
 		setTimeout(function() {
 			$("#button-1").css("background", "blue");
 		}, 300);
+		audioOne.play();
 	},
 	lightButtonTwo: function() {
+		var audioTwo = new Audio("sounds/ButtonTwo.m4a");
 		$("#button-2").css("background", "red");
 		setTimeout(function() {
 			$("#button-2").css("background", "darkred");
 		}, 300);
+		audioTwo.play();
 	},
 	lightButtonThree: function() {
+		var audioThree = new Audio("sounds/ButtonThree.m4a");
 		$("#button-3").css("background", "lightgreen");
 		setTimeout(function() {
 			$("#button-3").css("background", "green");
 		}, 300);
+		audioThree.play();
 	},
 	lightButtonFour: function() {
+		var audioFour = new Audio("sounds/ButtonFour.m4a");
 		$("#button-4").css("background", "lightyellow");
 		setTimeout(function() {
 			$("#button-4").css("background", "yellow");
 		}, 300);
-	}
+		audioFour.play();
+	},
 };
 
 const EventHandlers = {
@@ -135,7 +150,9 @@ const EventHandlers = {
 		if (GameData.gameOn === false) {
 			GameData.startGame();
 			GameData.addToRandom();
-			this.runRandom();
+			AppControl.runRandom();
+			GameData.clearSuccessful();
+			$("#current").html(GameData.successfulSequences);
 		}
 	},
 	clickOne: function() {
@@ -169,5 +186,9 @@ const EventHandlers = {
 };
 
 $(function(){
-
+	$("button").on("click", EventHandlers.newGame);
+	$("#button-1").on("click", EventHandlers.clickOne);
+	$("#button-2").on("click", EventHandlers.clickTwo);
+	$("#button-3").on("click", EventHandlers.clickThree);
+	$("#button-4").on("click", EventHandlers.clickFour);
 })
