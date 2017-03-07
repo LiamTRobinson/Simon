@@ -1,8 +1,8 @@
 const GameData = {
-	randomSequence: [1,2,3,4],
-	userSequence: [1,2,3,4],
+	randomSequence: [],
+	userSequence: [],
 	randomSequenceRunning: false,
-	gameOn: true,
+	gameOn: false,
 	successfulSequences: 0,
 
 	addToRandom: function() {
@@ -101,7 +101,6 @@ const AppControl = {
 			setTimeout(function(){_this.runRandom()}, 1000);
 		}
 	},
-
 };
 
 const ViewControl = {
@@ -131,3 +130,44 @@ const ViewControl = {
 	}
 };
 
+const EventHandlers = {
+	newGame: function() {
+		if (GameData.gameOn === false) {
+			GameData.startGame();
+			GameData.addToRandom();
+			this.runRandom();
+		}
+	},
+	clickOne: function() {
+		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
+			ViewControl.lightButtonOne();
+			AppControl.userButtonOne();
+			AppControl.successCheck();
+		}
+	},
+	clickTwo: function() {
+		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
+			ViewControl.lightButtonTwo();
+			AppControl.userButtonTwo();
+			AppControl.successCheck();
+		}
+	},
+	clickThree: function() {
+		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
+			ViewControl.lightButtonThree();
+			AppControl.userButtonThree();
+			AppControl.successCheck();
+		}
+	},
+	clickFour: function() {
+		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
+			ViewControl.lightButtonFour();
+			AppControl.userButtonFour();
+			AppControl.successCheck();
+		}
+	}
+};
+
+$(function(){
+
+})
