@@ -77,7 +77,7 @@ const AppControl = {
 					}
 				}(i), 1000*i)
 			}
-			setTimeout(function(){GameData.endRandom();}, 1010*stopTime)
+			setTimeout(function(){GameData.endRandom();}, 1000*stopTime)
 		}
 	},
 	userButtonOne: function() {
@@ -104,6 +104,7 @@ const AppControl = {
 			GameData.userClear();
 			$("#current").html(GameData.successfulSequences);
 			GameData.addToRandom();
+			GameData.startRandom();
 			var _this = this;
 			setTimeout(function(){_this.runRandom()}, 1000);
 		}
