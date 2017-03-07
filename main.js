@@ -73,7 +73,29 @@ const AppControl = {
 			setTimeout(function(){GameData.randomSequenceRunning = false;}, 1010*stopTime)
 		}
 	},
-	
+	userButtonOne: function() {
+		GameData.addToUser(1);
+	},
+	userButtonTwo: function() {
+		GameData.addToUser(2);
+	},
+	userButtonThree: function() {
+		GameData.addToUser(3);
+	},
+	userButtonFour: function() {
+		GameData.addToUser(4);
+	},
+	successCheck: function() {
+		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
+		if (GameData.userSequence.toString() !== checkTo.toString()) {
+			GameData.gameOn = false;
+			console.log("fail");
+		}
+		else {
+			GameData.increaseSuccessful();
+			console.log("success");
+		}
+	},
 };
 
 const ViewControl = {
