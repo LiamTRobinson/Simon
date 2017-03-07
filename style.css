@@ -1,0 +1,60 @@
+h1 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+footer {
+	text-align: center;
+}
+
+#new-game-container {
+	text-align: center;
+}
+
+#longest-streak {
+	text-align: center;
+}
+
+#game-board {
+	margin: 0 auto;
+	background: blue;
+	height: 500px;
+	width: 75%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+
+.button-container {
+	background: black;
+	height: 50%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button {
+	height: 95%;
+	width: 95%;
+}
+
+#button-1 {
+	background: blue;
+}
+
+#button-2 {
+	background: red;
+}
+
+#button-3 {
+	background: green;
+}
+
+#button-4 {
+	background: yellow;
+}
