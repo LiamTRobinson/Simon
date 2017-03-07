@@ -14,13 +14,31 @@ footer {
 	text-align: center;
 }
 
-.streak {
-	text-align: center;
+#current {
+	width: 100%;
+	height: 0px;
+	position: relative;
+	bottom: 7%;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+}
+
+#inner-current {
+	width: 70px;
+	height: 70px;
+	background: black;
+	font-size: 40px;
+	z-index: 2;
+	color: lime;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20%;
 }
 
 #game-board {
 	margin: 0 auto;
-	background: blue;
 	height: 500px;
 	width: 75%;
 	display: flex;
@@ -31,8 +49,8 @@ footer {
 
 .button-container {
 	background: black;
-	height: 50%;
-	width: 50%;
+	height: 48%;
+	width: 48%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -43,18 +61,42 @@ footer {
 	width: 95%;
 }
 
+#button-1-container {
+	border-radius: 10% 50% 0 50%;
+	margin: 0 1% 1% 0;
+}
+
+#button-2-container {
+	border-radius: 50% 10% 50% 0;
+	margin: 0 0 1% 1%;
+}
+
+#button-3-container {
+	border-radius: 50% 0 50% 10%;
+	margin: 1% 1% 0 0;
+}
+
+#button-4-container {
+	border-radius: 0 50% 10% 50%;
+	margin: 1% 0 0 1%;
+}
+
 #button-1 {
 	background: blue;
+	border-radius: 10% 50% 0 50%;
 }
 
 #button-2 {
 	background: darkred;
+	border-radius: 50% 10% 50% 0;
 }
 
 #button-3 {
 	background: green;
+	border-radius: 50% 0 50% 10%;
 }
 
 #button-4 {
 	background: yellow;
+	border-radius: 0 50% 10% 50%;
 }

@@ -102,7 +102,7 @@ const AppControl = {
 		else if (GameData.userSequence.length === GameData.randomSequence.length) {
 			GameData.increaseSuccessful();
 			GameData.userClear();
-			$("#current").html(GameData.successfulSequences);
+			$("#inner-current").html(GameData.successfulSequences);
 			GameData.addToRandom();
 			GameData.startRandom();
 			var _this = this;
@@ -153,7 +153,7 @@ const EventHandlers = {
 			GameData.addToRandom();
 			AppControl.runRandom();
 			GameData.clearSuccessful();
-			$("#current").html(GameData.successfulSequences);
+			$("#inner-current").html(GameData.successfulSequences);
 		}
 	},
 	clickOne: function() {
