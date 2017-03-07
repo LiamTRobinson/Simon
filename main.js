@@ -1,8 +1,8 @@
 const GameData = {
-	randomSequence: [],
-	userSequence: [],
+	randomSequence: [1,2,3,4],
+	userSequence: [1,2,3,4],
 	randomSequenceRunning: false,
-	gameOn: false,
+	gameOn: true,
 	successfulSequences: 0,
 
 	addToRandom: function() {
@@ -49,7 +49,7 @@ const GameData = {
 const AppControl = {
 	runRandom: function() {
 		if (GameData.gameOn === true){
-			GameData.randomSequenceRunning = true;
+			GameData.startRandom();
 			var stopTime = 0;
 			for (var i = 0; i < GameData.randomSequence.length; i++) {
 				stopTime += 1;
@@ -70,7 +70,7 @@ const AppControl = {
 					}
 				}(i), 1000*i)
 			}
-			setTimeout(function(){GameData.randomSequenceRunning = false;}, 1010*stopTime)
+			setTimeout(function(){GameData.endRandom();}, 1010*stopTime)
 		}
 	},
 	userButtonOne: function() {
@@ -88,14 +88,20 @@ const AppControl = {
 	successCheck: function() {
 		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
 		if (GameData.userSequence.toString() !== checkTo.toString()) {
-			GameData.gameOn = false;
-			console.log("fail");
+			GameData.randomClear();
+			GameData.userClear();
+			GameData.endGame();
 		}
-		else {
+		else if (GameData.userSequence.length === GameData.randomSequence.length) {
 			GameData.increaseSuccessful();
-			console.log("success");
+			GameData.userClear();
+			$("#current").html(GameData.successfulSequences);
+			GameData.addToRandom();
+			var _this = this;
+			setTimeout(function(){_this.runRandom()}, 1000);
 		}
 	},
+
 };
 
 const ViewControl = {
