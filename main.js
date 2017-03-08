@@ -75,7 +75,7 @@ const GameData = {
 			this.highNames[k] = this.highNames[k-1];
 		}
 		highNames[this.nameLoc] = newName;
-	}
+	},
 };
 
 const AppControl = {
@@ -120,6 +120,7 @@ const AppControl = {
 	successCheck: function() {
 		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
 		if (GameData.userSequence.toString() !== checkTo.toString()) {
+			ViewControl.showUserNameSubmit();
 			ViewControl.displayModal();
 			GameData.randomClear();
 			GameData.userClear();
@@ -196,7 +197,25 @@ const ViewControl = {
 		}
 	},
 	updateHighScores: function() {
-		
+		for (var g = 0; g < GameData.highScores.length; g++) {
+			$("#"+g+"-score").html(GameData.highScores[g]);
+			$("#"+g+"-name").html(GameData.highNames[g]);
+		}
+	},
+	hideCloseModal: function() {
+		$("#close-modal").css("display", "none");
+	},
+	showCloseModal: function() {
+		$("#close-modal").css("display", "flex");
+	},
+	showUserNameSubmit: function() {
+		if (GameData.checkScores() === true) {
+			$("#name-submit").css("display", "flex");
+			this.hideCloseModal();
+		}
+	},
+	hideNameSubmit: function() {
+		$("#name-submit").css("display", "none");
 	}
 };
 

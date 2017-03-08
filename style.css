@@ -12,6 +12,10 @@ nav {
 	margin: 10px;
 }
 
+input {
+	margin: 5px 0 5px 0;
+}
+
 #dropdown {
 	position: relative;
 }
@@ -78,8 +82,9 @@ h2 {
 	z-index: 3;
 	background: rgba(0,0,0,.7);
 	display: none;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+	flex-direction: column;
 }
 
 #close-modal {
@@ -100,7 +105,7 @@ h2 {
 	border-radius: 40%;
 }
 
-#modal-content {
+.modal-content {
 	background: rgba(14, 200, 150, .9);
 	width: 75%;
 	display: flex;
@@ -108,6 +113,13 @@ h2 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+#name-submit {
+	padding: 20px 0 20px 0;
+	display: none;
+	border-radius: 40px;
+	font-size: 20px;
 }
 
 #congratulations {
