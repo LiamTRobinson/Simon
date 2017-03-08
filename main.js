@@ -5,6 +5,9 @@ const GameData = {
 	gameOn: false,
 	successfulSequences: 0,
 	timeDelay: 1000,
+	highScores: [0,0,0,0,0],
+	highNames: ["N/A","N/A","N/A","N/A","N/A"],
+	nameLoc: 0,
 
 	addToRandom: function() {
 		var randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -53,6 +56,25 @@ const GameData = {
 	},
 	hardTime: function() {
 		this.timeDelay = 250;
+	},
+	checkScores: function() {
+		for (var i = 0; i < this.highScores.length; i++) {
+			if (this.successfulSequences > this.highScores[i]) {
+				for (var j = this.highScores.length - 1; j > i; j--) {
+					this.highScores[j] = this.highScores[j-1];
+				}
+				this.highScores[i] = this.successfulSequences;
+				this.nameLoc = i;
+				return true;
+			}
+		}
+		return false;
+	},
+	updateNames: function(newName) {
+		for (var k = this.highNames.length - 1; k < this.nameLoc; k--) {
+			this.highNames[k] = this.highNames[k-1];
+		}
+		highNames[this.nameLoc] = newName;
 	}
 };
 
@@ -102,6 +124,8 @@ const AppControl = {
 			GameData.randomClear();
 			GameData.userClear();
 			GameData.endGame();
+			GameData.clearSuccessful();
+			$("#inner-current").html(GameData.successfulSequences);
 		}
 		else if (GameData.userSequence.length === GameData.randomSequence.length) {
 			GameData.increaseSuccessful();
@@ -170,6 +194,9 @@ const ViewControl = {
 		else {
 			$("#scoreboard-container").css("display", "none")
 		}
+	},
+	updateHighScores: function() {
+		
 	}
 };
 
@@ -180,8 +207,6 @@ const EventHandlers = {
 			GameData.startGame();
 			GameData.addToRandom();
 			AppControl.runRandom();
-			GameData.clearSuccessful();
-			$("#inner-current").html(GameData.successfulSequences);
 		}
 	},
 	intermediateGame: function() {
@@ -190,8 +215,6 @@ const EventHandlers = {
 			GameData.startGame();
 			GameData.addToRandom();
 			AppControl.runRandom();
-			GameData.clearSuccessful();
-			$("#inner-current").html(GameData.successfulSequences);
 		}
 	},
 	hardGame: function() {
@@ -200,8 +223,6 @@ const EventHandlers = {
 			GameData.startGame();
 			GameData.addToRandom();
 			AppControl.runRandom();
-			GameData.clearSuccessful();
-			$("#inner-current").html(GameData.successfulSequences);
 		}
 	},
 	clickOne: function() {

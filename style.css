@@ -21,10 +21,11 @@ nav {
 	background: rgba(1,1,1,.5);
 	width: auto;
 	display: none;
+	border-radius: 0 0 20% 20%;
 }
 
 .scoreboard {
-	color: lightblue;
+	color: aquamarine;
 	font-size: 20px;
 	text-align: center;
 }
