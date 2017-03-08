@@ -116,7 +116,7 @@ const ViewControl = {
 		var audioOne = new Audio("sounds/ButtonOne.m4a");
 		$("#button-1").css("background", "lightblue");
 		setTimeout(function() {
-			$("#button-1").css("background", "blue");
+			$("#button-1").css("background", "radial-gradient(ellipse at top left, #c5deea 0%,#8abbd7 31%,#066dab 100%)");
 		}, 300);
 		audioOne.play();
 	},
@@ -124,7 +124,7 @@ const ViewControl = {
 		var audioTwo = new Audio("sounds/ButtonTwo.m4a");
 		$("#button-2").css("background", "red");
 		setTimeout(function() {
-			$("#button-2").css("background", "darkred");
+			$("#button-2").css("background", "radial-gradient(ellipse at top right, #ff3019 -1%,#ff3019 0%,#ff3019 0%,#ff3019 0%,#962503 76%)");
 		}, 300);
 		audioTwo.play();
 	},
@@ -132,7 +132,7 @@ const ViewControl = {
 		var audioThree = new Audio("sounds/ButtonThree.m4a");
 		$("#button-3").css("background", "lightgreen");
 		setTimeout(function() {
-			$("#button-3").css("background", "green");
+			$("#button-3").css("background", "radial-gradient(ellipse at bottom left, #b4ddb4 0%,#83c783 17%,#52b152 33%,#005700 83%,#002400 100%)");
 		}, 300);
 		audioThree.play();
 	},
@@ -140,7 +140,7 @@ const ViewControl = {
 		var audioFour = new Audio("sounds/ButtonFour.m4a");
 		$("#button-4").css("background", "lightyellow");
 		setTimeout(function() {
-			$("#button-4").css("background", "yellow");
+			$("#button-4").css("background", "radial-gradient(ellipse at bottom right, #faf096 0%,#fefcea 0%,#e2ca10 100%)");
 		}, 300);
 		audioFour.play();
 	},

@@ -1,13 +1,19 @@
+body {
+	background: url("images/a3xTOAB.jpg");
+}
 h1 {
 	text-align: center;
+	color: white;
 }
 
 p {
 	text-align: center;
+	color: white;
 }
 
 footer {
 	text-align: center;
+	color: white;
 }
 
 #new-game-container {
@@ -45,6 +51,7 @@ footer {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
+	max-width: 680px;
 }
 
 .button-container {
@@ -82,21 +89,21 @@ footer {
 }
 
 #button-1 {
-	background: blue;
+	background: radial-gradient(ellipse at top left, #c5deea 0%,#8abbd7 31%,#066dab 100%);
 	border-radius: 10% 50% 0 50%;
 }
 
 #button-2 {
-	background: darkred;
+	background: radial-gradient(ellipse at top right, #ff3019 -1%,#ff3019 0%,#ff3019 0%,#ff3019 0%,#962503 76%);
 	border-radius: 50% 10% 50% 0;
 }
 
 #button-3 {
-	background: green;
+	background: radial-gradient(ellipse at bottom left, #b4ddb4 0%,#83c783 17%,#52b152 33%,#005700 83%,#002400 100%);
 	border-radius: 50% 0 50% 10%;
 }
 
 #button-4 {
-	background: yellow;
+	background: radial-gradient(ellipse at bottom right, #faf096 0%,#fefcea 0%,#e2ca10 100%);
 	border-radius: 0 50% 10% 50%;
 }
