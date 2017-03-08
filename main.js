@@ -120,6 +120,7 @@ const AppControl = {
 	successCheck: function() {
 		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
 		if (GameData.userSequence.toString() !== checkTo.toString()) {
+			ViewControl.stopSpin();
 			ViewControl.showUserNameSubmit();
 			ViewControl.displayModal();
 			GameData.randomClear();
@@ -216,6 +217,14 @@ const ViewControl = {
 	},
 	hideUserNameSubmit: function() {
 		$("#name-submit").css("display", "none");
+	},
+	startSpin: function() {
+		$("#game-board").css("animation-name", "spin");
+		$("#inner-current").css("animation-name", "reverseSpin");
+	},
+	stopSpin: function() {
+		$("#game-board").css("animation-name", "");
+		$("#inner-current").css("animation-name", "");
 	}
 };
 
@@ -238,6 +247,15 @@ const EventHandlers = {
 	},
 	hardGame: function() {
 		if (GameData.gameOn === false) {
+			GameData.hardTime();
+			GameData.startGame();
+			GameData.addToRandom();
+			AppControl.runRandom();
+		}
+	},
+	expertGame: function() {
+		if (GameData.gameOn === false) {
+			ViewControl.startSpin();
 			GameData.hardTime();
 			GameData.startGame();
 			GameData.addToRandom();
@@ -283,6 +301,7 @@ const EventHandlers = {
 };
 
 $(function(){
+	$("#expert").on("click", EventHandlers.expertGame);
 	$("#submit-button").on("click", EventHandlers.clickSubmit);
 	$("#close-modal").on("click", ViewControl.hideModal);
 	$("#beginner").on("click", EventHandlers.beginnerGame);

@@ -156,6 +156,15 @@ footer {
 	z-index: 1;
 }
 
+@keyframes reverseSpin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
 #inner-current {
 	width: 70px;
 	height: 70px;
@@ -167,17 +176,34 @@ footer {
 	justify-content: center;
 	align-items: center;
 	border-radius: 20%;
+	animation-name: ;
+	animation-iteration-count: infinite;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 #game-board {
-	margin: 0 auto;
+	margin: 100px auto;
 	height: 500px;
 	width: 75%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-	max-width: 680px;
+	max-width: 500px;
+	animation-name: ;
+	animation-iteration-count: infinite;
+	animation-duration: 5s;
+	animation-timing-function: linear;
 }
 
 .button-container {
