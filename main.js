@@ -71,10 +71,10 @@ const GameData = {
 		return false;
 	},
 	updateNames: function(newName) {
-		for (var k = this.highNames.length - 1; k < this.nameLoc; k--) {
+		for (var k = this.highNames.length - 1; k > this.nameLoc; k--) {
 			this.highNames[k] = this.highNames[k-1];
 		}
-		highNames[this.nameLoc] = newName;
+		this.highNames[this.nameLoc] = newName;
 	},
 };
 
@@ -214,7 +214,7 @@ const ViewControl = {
 			this.hideCloseModal();
 		}
 	},
-	hideNameSubmit: function() {
+	hideUserNameSubmit: function() {
 		$("#name-submit").css("display", "none");
 	}
 };
@@ -271,10 +271,19 @@ const EventHandlers = {
 			AppControl.userButtonFour();
 			AppControl.successCheck();
 		}
+	},
+	clickSubmit: function() {
+		GameData.updateNames($("#userName").val());
+		ViewControl.updateHighScores();
+		ViewControl.hideModal();
+		ViewControl.showCloseModal();
+		ViewControl.hideUserNameSubmit();
+		$("#userName").val("");
 	}
 };
 
 $(function(){
+	$("#submit-button").on("click", EventHandlers.clickSubmit);
 	$("#close-modal").on("click", ViewControl.hideModal);
 	$("#beginner").on("click", EventHandlers.beginnerGame);
 	$("#intermediate").on("click", EventHandlers.intermediateGame);

@@ -23,7 +23,7 @@ input {
 #scoreboard-container {
 	position: absolute;
 	background: rgba(1,1,1,.5);
-	width: auto;
+	width: 250px;
 	display: none;
 	border-radius: 0 0 20% 20%;
 }
