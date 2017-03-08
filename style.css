@@ -12,14 +12,46 @@ nav {
 	margin: 10px;
 }
 
+#dropdown {
+	position: relative;
+}
+
+#scoreboard-container {
+	position: absolute;
+	background: rgba(1,1,1,.5);
+	width: auto;
+	display: none;
+}
+
+.scoreboard {
+	color: lightblue;
+	font-size: 20px;
+	text-align: center;
+}
+
+#second-place {
+	font-size: 18px;
+}
+
+#third-place {
+	font-size: 16px;
+}
+
+#fourth-place {
+	font-size: 14px;
+}
+
+#fifth-place {
+	font-size: 12px;
+}
+
 #bodywrap {
 	background: rgba(0,0,0,.2);
 	width: 100%;
 	height: 100%;
-	margin: 0;
 }
 
-button {
+.nav {
 	height: 60%;
 	border-radius: 10%;
 	background: rgb(134, 200, 91);
@@ -32,11 +64,64 @@ h1 {
 	letter-spacing: 5px;
 }
 
-p {
+h2 {
+	font-size: 50px;
+}
+
+#modal {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	background: rgba(0,0,0,.7);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+#close-modal {
+	height: 5%;
+	width: 5%;
+	align-self: flex-end;
+	margin: 10px 10px 0 0;
+	background: white;
+	border-radius: 40%;
+}
+
+#close-modal:hover {
+	background: lightgrey;
+	height: 5%;
+	width: 5%;
+	align-self: flex-end;
+	margin: 10px 10px 0 0;
+	border-radius: 40%;
+}
+
+#modal-content {
+	background: rgba(14, 200, 150, .9);
+	width: 75%;
+	display: flex;
+	border-radius: 5%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#congratulations {
+	font-size: 30px;
+}
+
+#instructions {
 	text-align: center;
 	color: white;
 	width: 40%;
 	margin: 0 auto;
+}
+
+#score {
+	font-size: 50px;
 }
 
 footer {

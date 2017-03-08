@@ -98,6 +98,7 @@ const AppControl = {
 	successCheck: function() {
 		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
 		if (GameData.userSequence.toString() !== checkTo.toString()) {
+			ViewControl.displayModal();
 			GameData.randomClear();
 			GameData.userClear();
 			GameData.endGame();
@@ -155,6 +156,21 @@ const ViewControl = {
 		}, 200);
 		audioFour.play();
 	},
+	displayModal: function() {
+		$("#score").html(GameData.successfulSequences);
+		$("#modal").css("display", "flex");
+	},
+	hideModal: function() {
+		$("#modal").css("display", "none");
+	},
+	showAndHideHighScores: function() {
+		if ($("#scoreboard-container").css("display") === "none") {
+			$("#scoreboard-container").css("display", "block");
+		}
+		else {
+			$("#scoreboard-container").css("display", "none")
+		}
+	}
 };
 
 const EventHandlers = {
@@ -169,20 +185,24 @@ const EventHandlers = {
 		}
 	},
 	intermediateGame: function() {
-		GameData.intermediateTime();
-		GameData.startGame();
-		GameData.addToRandom();
-		AppControl.runRandom();
-		GameData.clearSuccessful();
-		$("#inner-current").html(GameData.successfulSequences);
+		if (GameData.gameOn === false) {
+			GameData.intermediateTime();
+			GameData.startGame();
+			GameData.addToRandom();
+			AppControl.runRandom();
+			GameData.clearSuccessful();
+			$("#inner-current").html(GameData.successfulSequences);
+		}
 	},
 	hardGame: function() {
-		GameData.hardTime();
-		GameData.startGame();
-		GameData.addToRandom();
-		AppControl.runRandom();
-		GameData.clearSuccessful();
-		$("#inner-current").html(GameData.successfulSequences);
+		if (GameData.gameOn === false) {
+			GameData.hardTime();
+			GameData.startGame();
+			GameData.addToRandom();
+			AppControl.runRandom();
+			GameData.clearSuccessful();
+			$("#inner-current").html(GameData.successfulSequences);
+		}
 	},
 	clickOne: function() {
 		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
@@ -215,6 +235,7 @@ const EventHandlers = {
 };
 
 $(function(){
+	$("#close-modal").on("click", ViewControl.hideModal);
 	$("#beginner").on("click", EventHandlers.beginnerGame);
 	$("#intermediate").on("click", EventHandlers.intermediateGame);
 	$("#hard").on("click", EventHandlers.hardGame);
@@ -222,4 +243,5 @@ $(function(){
 	$("#button-2").on("click", EventHandlers.clickTwo);
 	$("#button-3").on("click", EventHandlers.clickThree);
 	$("#button-4").on("click", EventHandlers.clickFour);
+	$("#high-scores").on("click", ViewControl.showAndHideHighScores);
 })
