@@ -1,16 +1,10 @@
-
-
-
-
-
-
-
 const GameData = {
 	randomSequence: [],
 	userSequence: [],
 	randomSequenceRunning: false,
 	gameOn: false,
 	successfulSequences: 0,
+	timeDelay: 1000,
 
 	addToRandom: function() {
 		var randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -50,6 +44,15 @@ const GameData = {
 	},
 	clearSuccessful: function() {
 		this.successfulSequences = 0;
+	},
+	beginnerTime: function() {
+		this.timeDelay = 1000;
+	},
+	intermediateTime: function() {
+		this.timeDelay = 500;
+	},
+	hardTime: function() {
+		this.timeDelay = 250;
 	}
 };
 
@@ -75,9 +78,9 @@ const AppControl = {
 							ViewControl.lightButtonFour();
 						}
 					}
-				}(i), 1000*i)
+				}(i), GameData.timeDelay*i)
 			}
-			setTimeout(function(){GameData.endRandom();}, 1000*stopTime)
+			setTimeout(function(){GameData.endRandom();}, GameData.timeDelay*stopTime)
 		}
 	},
 	userButtonOne: function() {
@@ -115,46 +118,71 @@ const ViewControl = {
 	lightButtonOne: function() {
 		var audioOne = new Audio("sounds/ButtonOne.m4a");
 		$("#button-1").css("background", "lightblue");
+		$("#button-1-container").css("background", "rgba(0,255,255,.5)");
 		setTimeout(function() {
 			$("#button-1").css("background", "radial-gradient(ellipse at top left, #c5deea 0%,#8abbd7 31%,#066dab 100%)");
-		}, 300);
+			$("#button-1-container").css("background", "");
+		}, 200);
 		audioOne.play();
 	},
 	lightButtonTwo: function() {
 		var audioTwo = new Audio("sounds/ButtonTwo.m4a");
-		$("#button-2").css("background", "red");
+		$("#button-2").css("background", "salmon");
+		$("#button-2-container").css("background", "rgba(255,69,0,.5)");
 		setTimeout(function() {
-			$("#button-2").css("background", "radial-gradient(ellipse at top right, #ff3019 -1%,#ff3019 0%,#ff3019 0%,#ff3019 0%,#962503 76%)");
-		}, 300);
+			$("#button-2").css("background", "radial-gradient(ellipse at top right, #f85032 0%,#f16f5c 0%,#a8362b 99%,#a8362b 100%,#e73827 100%)");
+			$("#button-2-container").css("background", "");
+		}, 200);
 		audioTwo.play();
 	},
 	lightButtonThree: function() {
 		var audioThree = new Audio("sounds/ButtonThree.m4a");
 		$("#button-3").css("background", "lightgreen");
+		$("#button-3-container").css("background", "rgba(173,255,47,.5)");
 		setTimeout(function() {
 			$("#button-3").css("background", "radial-gradient(ellipse at bottom left, #b4ddb4 0%,#83c783 17%,#52b152 33%,#005700 83%,#002400 100%)");
-		}, 300);
+			$("#button-3-container").css("background", "");
+		}, 200);
 		audioThree.play();
 	},
 	lightButtonFour: function() {
 		var audioFour = new Audio("sounds/ButtonFour.m4a");
 		$("#button-4").css("background", "lightyellow");
+		$("#button-4-container").css("background", "rgba(255,230,140,.5)");
 		setTimeout(function() {
 			$("#button-4").css("background", "radial-gradient(ellipse at bottom right, #faf096 0%,#fefcea 0%,#e2ca10 100%)");
-		}, 300);
+			$("#button-4-container").css("background", "");
+		}, 200);
 		audioFour.play();
 	},
 };
 
 const EventHandlers = {
-	newGame: function() {
+	beginnerGame: function() {
 		if (GameData.gameOn === false) {
+			GameData.beginnerTime();
 			GameData.startGame();
 			GameData.addToRandom();
 			AppControl.runRandom();
 			GameData.clearSuccessful();
 			$("#inner-current").html(GameData.successfulSequences);
 		}
+	},
+	intermediateGame: function() {
+		GameData.intermediateTime();
+		GameData.startGame();
+		GameData.addToRandom();
+		AppControl.runRandom();
+		GameData.clearSuccessful();
+		$("#inner-current").html(GameData.successfulSequences);
+	},
+	hardGame: function() {
+		GameData.hardTime();
+		GameData.startGame();
+		GameData.addToRandom();
+		AppControl.runRandom();
+		GameData.clearSuccessful();
+		$("#inner-current").html(GameData.successfulSequences);
 	},
 	clickOne: function() {
 		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
@@ -187,7 +215,9 @@ const EventHandlers = {
 };
 
 $(function(){
-	$("button").on("click", EventHandlers.newGame);
+	$("#beginner").on("click", EventHandlers.beginnerGame);
+	$("#intermediate").on("click", EventHandlers.intermediateGame);
+	$("#hard").on("click", EventHandlers.hardGame);
 	$("#button-1").on("click", EventHandlers.clickOne);
 	$("#button-2").on("click", EventHandlers.clickTwo);
 	$("#button-3").on("click", EventHandlers.clickThree);

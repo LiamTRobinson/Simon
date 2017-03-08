@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PsyMan</title>
+	<title>PerSimon</title>
+	<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script
   		src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -10,27 +11,31 @@
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-	<h1>PsyMan</h1>
-	<p>When the game begins, the computer will start a sequence of buttons. When it is complete it will be up to you to repeat that sequence by clicking the buttons in the correct order. If you are successful, the computer will repeat the same sequence with one additional step and it will be up to you to repeat it again.  See how long you can go, click New Game to begin.</p>
-	<div id="new-game-container">
-		<button>New Game</button>
+	<div id="bodywrap">
+		<h1>PerSimon</h1>
+		<p>When the game begins, the computer will start a sequence of buttons. When it is complete it will be up to you to repeat that sequence by clicking the buttons in the correct order. If you are successful, the computer will repeat the same sequence with one additional step and it will be up to you to repeat it again.  See how long you can go, click on a difficulty level to begin!</p>
+		<nav>
+			<button id="beginner">Beginner</button>
+			<button id="intermediate">Intermediate</button>
+			<button id="hard">Hard</button>
+		</nav>
+		<hr>
+		<div id="game-board">
+			<div id="button-1-container" class="button-container">
+				<div id="button-1" class="button"></div>
+			</div>
+			<div id="button-2-container" class="button-container">
+				<div id="button-2" class="button"></div>
+			</div>
+			<div id="current"><div id="inner-current">0</div></div>
+			<div id="button-3-container" class="button-container">
+				<div id="button-3" class="button"></div>
+			</div>
+			<div id="button-4-container" class="button-container">
+				<div id="button-4" class="button"></div>
+			</div>
+		</div>
+		<footer>Created by Liam Robinson</footer>
 	</div>
-	<hr>
-	<div id="game-board">
-		<div id="button-1-container" class="button-container">
-			<div id="button-1" class="button"></div>
-		</div>
-		<div id="button-2-container" class="button-container">
-			<div id="button-2" class="button"></div>
-		</div>
-		<div id="current"><div id="inner-current">0</div></div>
-		<div id="button-3-container" class="button-container">
-			<div id="button-3" class="button"></div>
-		</div>
-		<div id="button-4-container" class="button-container">
-			<div id="button-4" class="button"></div>
-		</div>
-	</div>
-	<footer>Created by Liam Robinson</footer>
 </body>
 </html>
