@@ -8,6 +8,8 @@ const GameData = {
 	highScores: [0,0,0,0,0],
 	highNames: ["N/A","N/A","N/A","N/A","N/A"],
 	nameLoc: 0,
+	points: 0,
+	multiplier: 1,
 
 	addToRandom: function() {
 		var randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -59,11 +61,11 @@ const GameData = {
 	},
 	checkScores: function() {
 		for (var i = 0; i < this.highScores.length; i++) {
-			if (this.successfulSequences > this.highScores[i]) {
+			if (this.points > this.highScores[i]) {
 				for (var j = this.highScores.length - 1; j > i; j--) {
 					this.highScores[j] = this.highScores[j-1];
 				}
-				this.highScores[i] = this.successfulSequences;
+				this.highScores[i] = this.points;
 				this.nameLoc = i;
 				return true;
 			}
@@ -76,6 +78,15 @@ const GameData = {
 		}
 		this.highNames[this.nameLoc] = newName;
 	},
+	makePoints: function() {
+		this.points = this.successfulSequences*(1000/this.timeDelay)*this.multiplier;
+	},
+	expertMultiplierOn: function() {
+		this.multiplier = 2;
+	},
+	expertMultiplierOff: function() {
+		this.multiplier = 1;
+	}
 };
 
 const AppControl = {
@@ -123,6 +134,7 @@ const AppControl = {
 			ViewControl.stopSpin();
 			ViewControl.showUserNameSubmit();
 			ViewControl.displayModal();
+			GameData.expertMultiplierOff();
 			GameData.randomClear();
 			GameData.userClear();
 			GameData.endGame();
@@ -183,7 +195,7 @@ const ViewControl = {
 		audioFour.play();
 	},
 	displayModal: function() {
-		$("#score").html(GameData.successfulSequences);
+		$("#score").html(GameData.points);
 		$("#modal").css("display", "flex");
 	},
 	hideModal: function() {
@@ -210,6 +222,7 @@ const ViewControl = {
 		$("#close-modal").css("display", "flex");
 	},
 	showUserNameSubmit: function() {
+		GameData.makePoints();
 		if (GameData.checkScores() === true) {
 			$("#name-submit").css("display", "flex");
 			this.hideCloseModal();
@@ -256,6 +269,7 @@ const EventHandlers = {
 	expertGame: function() {
 		if (GameData.gameOn === false) {
 			ViewControl.startSpin();
+			GameData.expertMultiplierOn();
 			GameData.hardTime();
 			GameData.startGame();
 			GameData.addToRandom();
