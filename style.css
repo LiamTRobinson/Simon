@@ -3,6 +3,10 @@ body {
 	background-size: cover;
 }
 
+audio {
+	max-width: 100px;
+}
+
 nav {
 	display: flex;
 	justify-content: space-around;

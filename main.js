@@ -297,7 +297,7 @@ const EventHandlers = {
 		ViewControl.showCloseModal();
 		ViewControl.hideUserNameSubmit();
 		$("#userName").val("");
-	}
+	},
 };
 
 $(function(){
