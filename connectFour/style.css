@@ -1,0 +1,47 @@
+#game-board {
+	width: 90%;
+	height: 70%;
+	border: solid;
+	display: flex;
+	justify-content: space-between;
+}
+
+body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.column {
+	height: 100%;
+	width: 14.28%;
+	border: solid;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.p0 {
+	width: 90%;
+	height: 16%;
+	background: red;
+}
+
+.p1	{
+	width: 90%;
+	height: 16%;
+	background: blue; 
+}
+
+.p2 {
+	width: 90%;
+	height: 16%;
+	background: blue;
+}
+

@@ -82,7 +82,7 @@ const GameData = {
 		this.points = this.successfulSequences*(1000/this.timeDelay)*this.multiplier;
 	},
 	expertMultiplierOn: function() {
-		this.multiplier = 2;
+		this.multiplier = 1.5;
 	},
 	expertMultiplierOff: function() {
 		this.multiplier = 1;
