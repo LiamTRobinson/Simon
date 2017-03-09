@@ -28,9 +28,6 @@ const GameData = {
 	changeCurrentTile: function(tile) {
 		this.currentTile = tile;
 	},
-	clearCurrentTile: function() {
-		this.currentTile = "";
-	},
 	startGame: function() {
 		this.gameOn = true;
 	},
@@ -56,7 +53,7 @@ const AppControl = {
 	updateGameBoard: function() {
 		var xValue = GameData.currentTile.slice(0, 1);
 		var yValue = GameData.currentTile.slice(1);
-		GameData.changeGameBoard(GameData.playerTurn, xValue, yValue)
+		GameData.changeGameBoard(GameData.playerTurn, xValue, yValue);
 	},
 	checkColumn: function() {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
@@ -137,16 +134,16 @@ const AI = {
 	runAI: function() {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
-				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2]) {
-					EventHandlers.clickTile("#column-"+i);
+				if (i < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j]){
+					EventHandlers.clickTile("#column-"+(i+3));
 					return;
 				}
 			}
 		}
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
-				if (i < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j]){
-					EventHandlers.clickTile("#column-"+(i+3));
+				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2]) {
+					EventHandlers.clickTile("#column-"+i);
 					return;
 				}
 			}
@@ -169,16 +166,16 @@ const AI = {
 		}
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
-				if (j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1]) {
-					EventHandlers.clickTile("#column-"+i);
+				if (i < 5 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j]){
+					EventHandlers.clickTile("#column-"+(i+2));
 					return;
 				}
 			}
 		}
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
-				if (i < 5 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j]){
-					EventHandlers.clickTile("#column-"+(i+2));
+				if (j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1]) {
+					EventHandlers.clickTile("#column-"+i);
 					return;
 				}
 			}
@@ -209,14 +206,17 @@ const EventHandlers = {
 	clickTile: function(x) {
 		if (GameData.gameOn === true) {
 			ViewControl.changeTile(x);
-			AppControl.updateGameBoard();
-			AppControl.checkColumn();
-			AppControl.checkRow();
-			AppControl.checkRightDiagonal();
-			AppControl.checkLeftDiagonal();
-			GameData.playerChange();
-			if (GameData.AIGame === true && GameData.playerTurn === "p2") {
-				AI.runAI();
+			var xValue = GameData.currentTile.slice(0, 1);
+			if (GameData.gameBoard[xValue].every(function(x){return x != "p0"}) === false) {
+				AppControl.updateGameBoard();
+				AppControl.checkColumn();
+				AppControl.checkRow();
+				AppControl.checkRightDiagonal();
+				AppControl.checkLeftDiagonal();
+				GameData.playerChange();
+				if (GameData.AIGame === true && GameData.playerTurn === "p2") {
+					fAI.runAI();
+				}
 			}
 		}
 	},
