@@ -10,20 +10,40 @@
 	<title>Connect Four</title>
 </head>
 <body>
-	<div id="game-board">
-		<div id="column-0" class="column">
+	<div id="body-wrap">
+		<h1>Connect Four</h1>
+		<div id="score-container">
+			<div>
+				<div class="score" id="p-one">Player One:</div>
+				<div id="player-one-score">0</div>
+				<input type="text" id="p-one-name" placeholder="Player One Name">
+				<input type="submit" id="p-one-submit">
+			</div>
+			<div>
+				<div class="score" id="p-two">Player Two:</div>
+				<div id="player-two-score">0</div>
+				<input type="text" id="p-two-name" placeholder="Player Two Name">
+				<input type="submit" id="p-two-submit">
+			</div>
 		</div>
-		<div id="column-1" class="column">
-		</div>
-		<div id="column-2" class="column">
-		</div>
-		<div id="column-3" class="column">
-		</div>
-		<div id="column-4" class="column">
-		</div>
-		<div id="column-5" class="column">
-		</div>
-		<div id="column-6" class="column">
+
+		<button id="new-game">New Two Player Game</button>
+		<button id="new-ai-game">New One Player Game</button>
+		<div id="game-board">
+			<div id="column-0" class="column">
+			</div>
+			<div id="column-1" class="column">
+			</div>
+			<div id="column-2" class="column">
+			</div>
+			<div id="column-3" class="column">
+			</div>
+			<div id="column-4" class="column">
+			</div>
+			<div id="column-5" class="column">
+			</div>
+			<div id="column-6" class="column">
+			</div>
 		</div>
 	</div>
 </body>
