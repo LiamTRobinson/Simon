@@ -4,11 +4,20 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	background-size: cover;
 }
 
 footer {
 	position: fixed;
 	bottom: 10px;
+}
+
+p {
+	margin: 0;
+}
+
+#tj {
+	margin-left: 100px;
 }
 
 h1 {

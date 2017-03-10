@@ -5,13 +5,13 @@ body {
 }
 
 button {
-	margin-top: 5px;
 	font-family: "Ubuntu Condensed";
 	font-size: 15px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	height: 25px;
+}
+
+nav {
+	margin: 15px 0 5px 0;
 }
 
 a {
@@ -43,6 +43,7 @@ h1 {
 	display: flex;
 	justify-content: space-between;
 	max-width: 730px;
+	margin-bottom: 10px;
 }
 
 #body-wrap {

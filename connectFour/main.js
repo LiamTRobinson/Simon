@@ -284,10 +284,15 @@ const EventHandlers = {
 		$("#p2").html($("#p-two-name").val()+":");
 		$("#p-two-name").val("");
 	},
+	clearScores: function() {
+		$("#player-two-score").html("0");
+		$("#player-one-score").html("0");
+	}
 };
 
 $(function() {
 	ViewControl.makeBoard();
+	$("#clear-scores").on("click", EventHandlers.clearScores);
 	$("#close-modal").on("click", ViewControl.hideModal);
 	$("#new-ai-game").on("click", EventHandlers.newAIGame);
 	$(".column").on("click", function(){EventHandlers.clickTile(this)});
