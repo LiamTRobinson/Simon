@@ -1,4 +1,9 @@
 const GameData = {
+//this is all the data for the game. random sequence is the one that the computer will run. user sequence is the one the user
+//inputs each turn. randomsequencerunning defines whether or not it is running. gameon defines whether or not the game is on.
+//time delay sets the time delay for current difficulty. highscores stores the high scores. highnames stores the names for each
+//score. nameloc stores the array location for the name to update. points is the number of points scored. multiplier changes points
+//based on difficulty.
 	randomSequence: [],
 	userSequence: [],
 	randomSequenceRunning: false,
@@ -10,7 +15,7 @@ const GameData = {
 	nameLoc: 0,
 	points: 0,
 	multiplier: 1,
-
+//these are explicit in their function. they manipulate the above data.
 	addToRandom: function() {
 		var randomNumber = Math.floor(Math.random() * 4) + 1;
 		this.randomSequence.push(randomNumber);
@@ -59,6 +64,8 @@ const GameData = {
 	hardTime: function() {
 		this.timeDelay = 250;
 	},
+//this checks the final score against the high scores, bumps everything below it down one space, inserts the current at i, and stores the
+//value of i in nameloc.
 	checkScores: function() {
 		for (var i = 0; i < this.highScores.length; i++) {
 			if (this.points > this.highScores[i]) {
@@ -90,6 +97,7 @@ const GameData = {
 };
 
 const AppControl = {
+//this runs the computer turn
 	runRandom: function() {
 		if (GameData.gameOn === true){
 			GameData.startRandom();
@@ -116,6 +124,7 @@ const AppControl = {
 			setTimeout(function(){GameData.endRandom();}, GameData.timeDelay*stopTime)
 		}
 	},
+//these add corresponding values to user sequence.
 	userButtonOne: function() {
 		GameData.addToUser(1);
 	},
@@ -128,6 +137,7 @@ const AppControl = {
 	userButtonFour: function() {
 		GameData.addToUser(4);
 	},
+//this checks if the user input is correct and if it is complete
 	successCheck: function() {
 		var checkTo = GameData.randomSequence.slice(0, GameData.userSequence.length);
 		if (GameData.userSequence.toString() !== checkTo.toString()) {
@@ -154,6 +164,7 @@ const AppControl = {
 };
 
 const ViewControl = {
+//these light the buttons and play the button sounds
 	lightButtonOne: function() {
 		var audioOne = new Audio("sounds/ButtonOne.m4a");
 		$("#button-1").css("background", "lightblue");
@@ -194,6 +205,7 @@ const ViewControl = {
 		}, 200);
 		audioFour.play();
 	},
+//these display and hide the end game modal
 	displayModal: function() {
 		$("#score").html(GameData.points);
 		$("#modal").css("display", "flex");
@@ -201,6 +213,7 @@ const ViewControl = {
 	hideModal: function() {
 		$("#modal").css("display", "none");
 	},
+//this expands or collapses the high scores
 	showAndHideHighScores: function() {
 		if ($("#scoreboard-container").css("display") === "none") {
 			$("#scoreboard-container").css("display", "block");
@@ -209,12 +222,14 @@ const ViewControl = {
 			$("#scoreboard-container").css("display", "none")
 		}
 	},
+//this updates the high scores on the dom
 	updateHighScores: function() {
 		for (var g = 0; g < GameData.highScores.length; g++) {
 			$("#"+g+"-score").html(GameData.highScores[g]);
 			$("#"+g+"-name").html(GameData.highNames[g]);
 		}
 	},
+//these show and hide close modal and usersubmit if its a high score 
 	hideCloseModal: function() {
 		$("#close-modal").css("display", "none");
 	},
@@ -231,6 +246,7 @@ const ViewControl = {
 	hideUserNameSubmit: function() {
 		$("#name-submit").css("display", "none");
 	},
+//these start and stop expert spin
 	startSpin: function() {
 		$("#game-board").css("animation-name", "spin");
 		$("#inner-current").css("animation-name", "reverseSpin");
@@ -242,6 +258,7 @@ const ViewControl = {
 };
 
 const EventHandlers = {
+//these do everything to start games for their given difficulties
 	beginnerGame: function() {
 		if (GameData.gameOn === false) {
 			GameData.beginnerTime();
@@ -276,6 +293,7 @@ const EventHandlers = {
 			AppControl.runRandom();
 		}
 	},
+//these do everything needed for corresponding button clicks
 	clickOne: function() {
 		if (GameData.gameOn === true && GameData.randomSequenceRunning === false) {
 			ViewControl.lightButtonOne();
@@ -304,6 +322,7 @@ const EventHandlers = {
 			AppControl.successCheck();
 		}
 	},
+//this does everything needed upon a high score submit
 	clickSubmit: function() {
 		GameData.updateNames($("#userName").val());
 		ViewControl.updateHighScores();
@@ -313,7 +332,7 @@ const EventHandlers = {
 		$("#userName").val("");
 	},
 };
-
+//these tie all the above to the dom
 $(function(){
 	$("#expert").on("click", EventHandlers.expertGame);
 	$("#submit-button").on("click", EventHandlers.clickSubmit);

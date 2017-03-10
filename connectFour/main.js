@@ -1,4 +1,7 @@
 const GameData = {
+//this is all of the game data.  gameboard records player positions. player turn marks the current player. current tile stores the clicked tile id for
+//functions. gameon defines whether or not the game is running. player(x)score keeps score data. aigame defines whether the ai is running or not. clicktile checks
+//to see if the ai successfully clicked a tile.
 	gameBoard: [["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"],["p0","p0","p0","p0","p0","p0"]],
 	playerTurn: "p1",
 	currentTile: "",
@@ -7,7 +10,7 @@ const GameData = {
 	playerTwoScore: 0,
 	AIGame: false,
 	clickTile: false,
-
+//these functions are small and explicit in their use. they only manipulate the above data.
 	clickTileTrue: function() {
 		this.clickTile = true;
 	},
@@ -57,11 +60,13 @@ const GameData = {
 };
 
 const AppControl = {
+//this changes the value of a certain string in a certain array in the game board using currenttile data.
 	updateGameBoard: function() {
 		var xValue = GameData.currentTile.slice(0, 1);
 		var yValue = GameData.currentTile.slice(1);
 		GameData.changeGameBoard(GameData.playerTurn, xValue, yValue);
 	},
+//these all check if there are four of a kind in a column, row, increasing right diagonal, and increasing left diagonal.
 	checkColumn: function() {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
@@ -113,6 +118,7 @@ const AppControl = {
 };
 
 const ViewControl = {
+//this is a function to create the game board, each piece having a unique id based on it's position in the matrix.
 	makeBoard: function() {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
@@ -121,6 +127,7 @@ const ViewControl = {
 			}
 		}
 	},
+//this changes the clicked tile's class and puts its id in the current tile data.
 	changeTile: function(x) {
 		var children = $(x).children();
 		for (var i = 0; i < children.length; i++) {
@@ -131,13 +138,16 @@ const ViewControl = {
 			}
 		}
 	},
+//this changes the scores on the dom
 	updateScores: function() {
 		$("#player-one-score").html(GameData.playerOneScore);
 		$("#player-two-score").html(GameData.playerTwoScore);
 	},
+//this hides the game over modal
 	hideModal: function() {
 		$("#modal").css("display", "none");
 	},
+//this displays the game over modal
 	displayModal: function() {
 		$("#winner").html($("#"+GameData.playerTurn).html().slice(0, $("#"+GameData.playerTurn).html().length-1));
 		$("#modal").css("display", "flex");
@@ -145,6 +155,7 @@ const ViewControl = {
 };
 
 const AI = {
+//this is a really long function that I want to improve that runs the ai for single player.
 	runAI: function() {
 		GameData.clickTileFalse();
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
@@ -234,6 +245,7 @@ const AI = {
 };
 
 const EventHandlers = {
+//this is everything that happens when a column is clicked.
 	clickTile: function(x) {
 		if (GameData.gameOn === true) {	
 			var xValue = $(x).attr("id").slice($(x).attr("id").length-1);
@@ -258,6 +270,7 @@ const EventHandlers = {
 			}
 		}
 	},
+//this is everything needed to start a new two player game
 	newGame: function() {
 		if (GameData.gameOn === false) {
 			GameData.resetGameBoard();
@@ -265,6 +278,7 @@ const EventHandlers = {
 			GameData.startGame();
 		}
 	},
+//this is everything needed to start a new one player game
 	newAIGame: function() {
 		if (GameData.gameOn === false) {
 			GameData.resetGameBoard();
@@ -276,20 +290,23 @@ const EventHandlers = {
 			}
 		}
 	},
+//these change player names on the dom
 	getPlayerOneName: function() {
 		$("#p1").html($("#p-one-name").val()+":");
 		$("#p-one-name").val("");
 	},
+
 	getPlayerTwoName: function() {
 		$("#p2").html($("#p-two-name").val()+":");
 		$("#p-two-name").val("");
 	},
+//this clears both scores
 	clearScores: function() {
 		$("#player-two-score").html("0");
 		$("#player-one-score").html("0");
 	}
 };
-
+//this ties all of our click events to the dom and makes the game board on load
 $(function() {
 	ViewControl.makeBoard();
 	$("#clear-scores").on("click", EventHandlers.clearScores);
