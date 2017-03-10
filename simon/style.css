@@ -50,6 +50,16 @@ input {
 	font-size: 14px;
 }
 
+#highscore {
+	font-size: 25px;
+}
+
+#userName {
+	width: 50%;
+	height: 30px;
+	font-size: 25px;
+}
+
 #fifth-place {
 	font-size: 12px;
 }
@@ -98,6 +108,7 @@ h2 {
 	margin: 10px 10px 0 0;
 	background: white;
 	border-radius: 40%;
+	text-align: center;
 }
 
 #close-modal:hover {
@@ -107,6 +118,7 @@ h2 {
 	align-self: flex-end;
 	margin: 10px 10px 0 0;
 	border-radius: 40%;
+	text-align: center;
 }
 
 .modal-content {

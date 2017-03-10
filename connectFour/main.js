@@ -228,10 +228,16 @@ const AI = {
 
 const EventHandlers = {
 	clickTile: function(x) {
-		if (GameData.gameOn === true) {
-			ViewControl.changeTile(x);
-			var xValue = GameData.currentTile.slice(0, 1);
-			if (GameData.gameBoard[xValue].every(function(x){return x != "p0"}) === false) {
+		if (GameData.gameOn === true) {	
+			var xValue = $(x).attr("id").slice($(x).attr("id").length-1);
+			var newArray= [];
+			for (var i = 0; i < GameData.gameBoard[xValue].length; i++){
+				if (GameData.gameBoard[xValue][i] === "p0") {
+					newArray.push("p0");
+				}
+			}
+			if (newArray.length !== 0) {
+				ViewControl.changeTile(x);
 				GameData.clickTileTrue();
 				AppControl.updateGameBoard();
 				AppControl.checkColumn();

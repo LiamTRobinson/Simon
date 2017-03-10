@@ -1,0 +1,76 @@
+body {
+	background: url("images/bg.png");
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer {
+	position: fixed;
+	bottom: 10px;
+}
+
+h1 {
+	font-size: 80px;
+	height: auto;
+	margin: 0;
+	text-decoration: underline;
+	font-family: "Dosis";
+}
+
+h2 {
+	font-size: 55px;
+	font-family: "Dosis";
+}
+
+a {
+	text-decoration: none;
+}
+
+audio {
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-width: 70px;
+}
+
+#simon {
+	background: url("images/bodyback.jpeg");
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	border-style: solid;
+	border-color: darkblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	margin: 20px;
+	font-family: "Dosis";
+	font-weight: bold;
+}
+
+#connect-four {
+	background: url("images/bg.jpg");
+	background-position: bottom right;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%; 
+	border-style: solid;
+	border-color: darkblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	margin: 20px;
+	font-family: "Dosis";
+	font-weight: bold;
+	color: maroon;
+}
+
+#games-container {
+	display: flex;
+	justify-content: space-around;
+}
