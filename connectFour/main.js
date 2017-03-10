@@ -6,7 +6,14 @@ const GameData = {
 	playerOneScore: 0,
 	playerTwoScore: 0,
 	AIGame: false,
+	clickTile: false,
 
+	clickTileTrue: function() {
+		this.clickTile = true;
+	},
+	clickTileFalse: function() {
+		this.clickTile = false;
+	},
 	playerChange: function() {
 		if (this.playerTurn === "p1"){
 			this.playerTurn = "p2";
@@ -132,19 +139,14 @@ const ViewControl = {
 
 const AI = {
 	runAI: function() {
+		GameData.clickTileFalse();
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j]){
 					EventHandlers.clickTile("#column-"+(i+3));
-					return;
-				}
-			}
-		}
-		for (var i = 0; i < GameData.gameBoard.length; i++) {
-			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
-				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2]) {
-					EventHandlers.clickTile("#column-"+i);
-					return;
+					if (GameData.clickTile === true){
+						return;
+					}
 				}
 			}
 		}
@@ -152,7 +154,9 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 4 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j+2]){
 					EventHandlers.clickTile("#column-"+(i+3));
-					return;
+					if (GameData.clickTile === true){
+						return;
+					}
 				}
 			}
 		}
@@ -160,7 +164,19 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i > 2 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i-1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i-2][j+2]){
 					EventHandlers.clickTile("#column-"+(i-3));
+					if (GameData.clickTile === true){
+						return;
+					}
+				}
+			}
+		}
+		for (var i = 0; i < GameData.gameBoard.length; i++) {
+			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2]) {
+					EventHandlers.clickTile("#column-"+i);
+					if (GameData.clickTile === true){
 					return;
+					}
 				}
 			}
 		}
@@ -168,7 +184,9 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 5 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j]){
 					EventHandlers.clickTile("#column-"+(i+2));
+					if (GameData.clickTile === true){
 					return;
+					}
 				}
 			}
 		}
@@ -176,7 +194,9 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1]) {
 					EventHandlers.clickTile("#column-"+i);
+					if (GameData.clickTile === true){
 					return;
+					}
 				}
 			}
 		}
@@ -184,7 +204,9 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 5 && j < 2 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j+1]){
 					EventHandlers.clickTile("#column-"+(i+2));
+					if (GameData.clickTile === true){
 					return;
+					}
 				}
 			}
 		}
@@ -192,7 +214,9 @@ const AI = {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i > 1 && j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i-1][j+1]){
 					EventHandlers.clickTile("#column-"+(i-2));
+					if (GameData.clickTile === true){
 					return;
+					}
 				}
 			}
 		}
@@ -208,6 +232,7 @@ const EventHandlers = {
 			ViewControl.changeTile(x);
 			var xValue = GameData.currentTile.slice(0, 1);
 			if (GameData.gameBoard[xValue].every(function(x){return x != "p0"}) === false) {
+				GameData.clickTileTrue();
 				AppControl.updateGameBoard();
 				AppControl.checkColumn();
 				AppControl.checkRow();
@@ -215,7 +240,7 @@ const EventHandlers = {
 				AppControl.checkLeftDiagonal();
 				GameData.playerChange();
 				if (GameData.AIGame === true && GameData.playerTurn === "p2") {
-					fAI.runAI();
+					AI.runAI();
 				}
 			}
 		}
