@@ -1,3 +1,28 @@
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes reverseSpin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+span {
+	animation-name: reverseSpin;
+	animation-iteration-count: infinite;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+}
+
 body {
 	background: url("images/bg.png");
 	display: flex;
@@ -59,6 +84,10 @@ audio {
 	margin: 20px;
 	font-family: "Dosis";
 	font-weight: bold;
+	animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-duration: 10s;
+	animation-timing-function: linear;
 }
 
 #connect-four {
@@ -77,6 +106,10 @@ audio {
 	font-family: "Dosis";
 	font-weight: bold;
 	color: maroon;
+	animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-duration: 10s;
+	animation-timing-function: linear;
 }
 
 #games-container {
