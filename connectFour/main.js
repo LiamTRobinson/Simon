@@ -66,7 +66,7 @@ const AppControl = {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+3]){
-					alert(GameData.playerTurn + "wins!")
+					ViewControl.displayModal();
 					GameData.endGame();
 					GameData.endAIGame();
 					return;
@@ -78,7 +78,7 @@ const AppControl = {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+3][j]){
-					alert(GameData.playerTurn + "wins!")
+					ViewControl.displayModal();
 					GameData.endGame();
 					GameData.endAIGame();
 					return;
@@ -90,7 +90,7 @@ const AppControl = {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 4 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j+2] && GameData.gameBoard[i][j] === GameData.gameBoard[i+3][j+3]){
-					alert(GameData.playerTurn + "wins!")
+					ViewControl.displayModal();
 					GameData.endGame();
 					GameData.endAIGame();
 					return;
@@ -102,7 +102,7 @@ const AppControl = {
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i > 2 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i-1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i-2][j+2] && GameData.gameBoard[i][j] === GameData.gameBoard[i-3][j+3]){
-					alert(GameData.playerTurn + "wins!")
+					ViewControl.displayModal();
 					GameData.endGame();
 					GameData.endAIGame();
 					return;
@@ -134,6 +134,13 @@ const ViewControl = {
 	updateScores: function() {
 		$("#player-one-score").html(GameData.playerOneScore);
 		$("#player-two-score").html(GameData.playerTwoScore);
+	},
+	hideModal: function() {
+		$("#modal").css("display", "none");
+	},
+	displayModal: function() {
+		$("#winner").html($("#"+GameData.playerTurn).html().slice(0, $("#"+GameData.playerTurn).html().length-1));
+		$("#modal").css("display", "flex");
 	},
 };
 
@@ -270,17 +277,18 @@ const EventHandlers = {
 		}
 	},
 	getPlayerOneName: function() {
-		$("#p-one").html($("#p-one-name").val()+":");
+		$("#p1").html($("#p-one-name").val()+":");
 		$("#p-one-name").val("");
 	},
 	getPlayerTwoName: function() {
-		$("#p-two").html($("#p-two-name").val()+":");
+		$("#p2").html($("#p-two-name").val()+":");
 		$("#p-two-name").val("");
-	}
+	},
 };
 
 $(function() {
 	ViewControl.makeBoard();
+	$("#close-modal").on("click", ViewControl.hideModal);
 	$("#new-ai-game").on("click", EventHandlers.newAIGame);
 	$(".column").on("click", function(){EventHandlers.clickTile(this)});
 	$("#new-game").on("click", EventHandlers.newGame);

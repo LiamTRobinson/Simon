@@ -11,6 +11,13 @@
 	<title>Kinect Four</title>
 </head>
 <body>
+	<div id="modal">
+		<div class="modal-content">
+			<button id="close-modal">X</button>
+			<h2>Game Over!</h2>
+			<p><span id="winner"></span> wins!</p>	
+		</div>
+	</div>
 	<div id="body-wrap">
 	<audio controls loop autoplay="true">
 		<source src="bg.m4a">
@@ -19,13 +26,13 @@
 		<a href="../homepage/index.html"><button>Home</button></a>
 		<div id="score-container">
 			<div>
-				<div class="score" id="p-one">Player One:</div>
+				<div class="score" id="p1">Player One:</div>
 				<div id="player-one-score">0</div>
 				<input type="text" id="p-one-name" placeholder="Player One Name">
 				<input type="submit" id="p-one-submit">
 			</div>
 			<div>
-				<div class="score" id="p-two">Player Two:</div>
+				<div class="score" id="p2">Player Two:</div>
 				<div id="player-two-score">0</div>
 				<input type="text" id="p-two-name" placeholder="Player Two Name">
 				<input type="submit" id="p-two-submit">
