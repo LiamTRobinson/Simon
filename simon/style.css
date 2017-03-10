@@ -9,7 +9,7 @@ audio {
 
 nav {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	background: rgba(0,0,200, .3);
 	height: 40px;
@@ -73,7 +73,7 @@ input {
 .nav {
 	height: 60%;
 	border-radius: 10%;
-	background: rgb(134, 200, 91);
+	background: lightseagreen;
 }
 
 h1 {
