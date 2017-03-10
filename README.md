@@ -11,6 +11,8 @@ A Paw in My Face by The Field,
 
 I also used jquery in this project.
 
+The live page can be found at: https://liamtrobinson.github.io/Simon/index.html
+
 My trello board can be found at: https://trello.com/b/iZuQWMaL/simon
 
 Here are some pictures of my planning process:
