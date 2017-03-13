@@ -56,6 +56,10 @@ const GameData = {
 	},
 	endAIGame: function() {
 		this.AIGame = false;
+	},
+	clearPlayerScores: function() {
+		this.playerOneScore = 0;
+		this.playerTwoScore = 0;
 	}
 };
 
@@ -158,56 +162,115 @@ const AI = {
 //this is a really long function that I want to improve that runs the ai for single player.
 	runAI: function() {
 		GameData.clickTileFalse();
+//this checks the right side of a row
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				//if there is three of a kind in a row +
 				if (i < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j]){
-					EventHandlers.clickTile("#column-"+(i+3));
-					if (GameData.clickTile === true){
-						return;
+					//if the right side is open
+					if (GameData.gameBoard[i+3][j] === "p0") {
+						//if it is on the bottom row
+						if (j === 0){
+							EventHandlers.clickTile("#column-"+(i+3));
+							if (GameData.clickTile === true){
+								console.log("right row 3");
+								return;
+							}
+						}
+						//if it is not on the bottom row and the column is high enough
+						else if (GameData.gameBoard[i+3][j-1] !== "p0") {
+							EventHandlers.clickTile("#column-"+(i+3));
+							if (GameData.clickTile === true){
+								console.log("right row 3");
+								return;
+							}
+						}
 					}
 				}
 			}
 		}
+//this checks the bottom left to top right diagnonal
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				//if there are three of a kind
 				if (i < 4 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i+2][j+2]){
-					EventHandlers.clickTile("#column-"+(i+3));
-					if (GameData.clickTile === true){
-						return;
+					//if the right side is open
+					if (GameData.gameBoard[i+3][j+3] === "p0"){
+						//if the column is high enough
+						if (GameData.gameBoard[i+3][j+2] !== "p0") {
+							EventHandlers.clickTile("#column-"+(i+3));
+							if (GameData.clickTile === true){
+								console.log("left bottom to right top 3");
+								return;
+							}
+						}
 					}
 				}
 			}
 		}
+//this checks the bottom right to top left diagonal
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				//this checks for three of a kind
 				if (i > 2 && j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i-1][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i-2][j+2]){
-					EventHandlers.clickTile("#column-"+(i-3));
-					if (GameData.clickTile === true){
-						return;
+					//if the left side is open
+					if (GameData.gameBoard[i-3][j+3] === "p0"){
+						//if the column is high enough
+						if (GameData.gameBoard[i-3][j+2] !== "p0"){
+							EventHandlers.clickTile("#column-"+(i-3));
+							if (GameData.clickTile === true){
+								console.log("right bottom to left top 3");
+								return;
+							}
+						}
 					}
 				}
 			}
 		}
+//this checks columns
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				//this checks for three of a kind
 				if (j < 3 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1] && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+2]) {
-					EventHandlers.clickTile("#column-"+i);
-					if (GameData.clickTile === true){
-					return;
+					//if the spot is open
+					if (GameData.gameBoard[i][j+3] === "p0") {
+						EventHandlers.clickTile("#column-"+i);
+						if (GameData.clickTile === true){
+							console.log("column 3");
+							return;
+						}
 					}
 				}
 			}
 		}
+//this checks the right side of a row
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
+				//this checks for two of a kind
 				if (i < 5 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j]){
-					EventHandlers.clickTile("#column-"+(i+2));
-					if (GameData.clickTile === true){
-					return;
+					//if the right side is open
+					if (GameData.gameBoard[i+2][j] === "p0"){
+						//if it is on the bottom row
+						if (j === 0) {
+							EventHandlers.clickTile("#column-"+(i+2));
+							if (GameData.clickTile === true){
+								console.log("right row 2");
+								return;
+							}
+						}
+						//if the column is high enough
+						else if (GameData.gameBoard[i+2][j-1] !== "p0") {
+							EventHandlers.clickTile("#column-"+(i+2));
+							if (GameData.clickTile === true){
+								console.log("right row 2");
+								return;
+							}
+						}
 					}
 				}
 			}
 		}
+//this checks the column
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i][j+1]) {
@@ -218,6 +281,7 @@ const AI = {
 				}
 			}
 		}
+//this checks the bottom left to top right
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i < 5 && j < 2 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i+1][j+1]){
@@ -228,6 +292,7 @@ const AI = {
 				}
 			}
 		}
+//this checks the bottom right to top left
 		for (var i = 0; i < GameData.gameBoard.length; i++) {
 			for (var j = 0; j < GameData.gameBoard[i].length; j++) {
 				if (i > 1 && j < 4 && GameData.gameBoard[i][j] !== "p0" && GameData.gameBoard[i][j] === GameData.gameBoard[i-1][j+1]){
@@ -240,6 +305,7 @@ const AI = {
 		}
 		var r = Math.floor(Math.random()*7);
 		EventHandlers.clickTile("#column-"+r);
+		console.log("random");
 		return;
 	},
 };
@@ -304,6 +370,7 @@ const EventHandlers = {
 	clearScores: function() {
 		$("#player-two-score").html("0");
 		$("#player-one-score").html("0");
+		GameData.clearPlayerScores();
 	}
 };
 //this ties all of our click events to the dom and makes the game board on load
