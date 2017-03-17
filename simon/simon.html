@@ -3,14 +3,23 @@
 <head>
 	<title>PerSimon</title>
 	<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 	<script
   		src="https://code.jquery.com/jquery-3.1.1.min.js"
   		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </head>
-<body>
+<body class="container">
+<!--Modal-->
 	<div id="modal">
 		<div class="modal-content">
 			<button id="close-modal">X</button>
@@ -24,46 +33,60 @@
 			<input id="submit-button" type="submit">
 		</div>
 	</div>
-	<div id="bodywrap">
-		<h1>PerSimon</h1>
-		<p id="instructions">A simple Simon clone. Increased difficulty yields increased points. Good luck!</p>
-		<nav>
-			<audio controls autoplay="true" loop="true">
-				<source src="sounds/Cliffs.mp3" type="audio/mp3">
-			</audio>
-			<div id="dropdown">
-				<a href="../index.html"><button class="nav">Home</button></a>
-				<button class="nav" id="high-scores">High Scores</button>
-				<div id="scoreboard-container">
-					<div class="scoreboard" id="first-place">1. <span id="0-name">N/A</span>, <span id="0-score">0</span></div>
-					<div class="scoreboard" id="second-place">2. <span id="1-name">N/A</span>, <span id="1-score">0</span></div>
-					<div class="scoreboard" id="third-place">3. <span id="2-name">N/A</span>, <span id="2-score">0</span></div>
-					<div class="scoreboard" id="fourth-place">4. <span id="3-name">N/A</span>, <span id="3-score">0</span></div>
-					<div class="scoreboard" id="fifth-place">5. <span id="4-name">N/A</span>, <span id="4-score">0</span></div>
-				</div>
-			</div>
-			<button class="nav" id="beginner">Beginner</button>
-			<button class="nav" id="intermediate">Intermediate</button>
-			<button class="nav" id="hard">Hard</button>
-			<button class="nav" id="expert">Expert</button>
-		</nav>
-		<hr>
-		<div id="game-board">
-			<div id="button-1-container" class="button-container">
-				<div id="button-1" class="button"></div>
-			</div>
-			<div id="button-2-container" class="button-container">
-				<div id="button-2" class="button"></div>
-			</div>
-			<div id="current"><div id="inner-current">0</div></div>
-			<div id="button-3-container" class="button-container">
-				<div id="button-3" class="button"></div>
-			</div>
-			<div id="button-4-container" class="button-container">
-				<div id="button-4" class="button"></div>
+	<div class="row">
+		<div class="row">
+			<div class="col s12 l12 m12">
+				<h1>PerSimon</h1>
+				<p id="instructions">A simple Simon clone. Increased difficulty yields increased points. Good luck!</p>
 			</div>
 		</div>
-		<footer>Created by Liam Robinson</footer>
+<!--Nav Bar-->
+		<div class="row">
+			<ul id="scoreboard-container" class="dropdown-content blue lighten-3">
+				<li><a><span id="0-name">N/A</span> - <span id="0-score">0</span></a></li>
+				<li><a><span id="1-name">N/A</span> - <span id="1-score">0</span></a></li>
+				<li><a><span id="2-name">N/A</span> - <span id="2-score">0</span></a></li>
+				<li><a><span id="3-name">N/A</span> - <span id="3-score">0</span></a></li>
+				<li><a><span id="4-name">N/A</span> - <span id="4-score">0</span></a></li>
+			</ul>
+			<ul id="new-games-container" class="dropdown-content blue lighten-3">
+				<li><a id="beginner">Beginner</a></li>
+				<li><a id="intermediate">Intermediate</a></li>
+				<li><a id="hard">Hard</a></li>
+				<li><a id="expert">Expert</a></li>
+			</ul>
+			<nav>
+				<div class="nav-wrapper">
+					<ul>
+						<li class="col s4 m4 l4"><a href="../index.html">Home</a></li>
+						<li  class="col s4 m4 l4"><a href="#" class="dropdown-button" data-activates="scoreboard-container">High Scores</a></li>
+						<li  class="col s4 m4 l4"><a href="#" class="dropdown-button" data-activates="new-games-container">New Game</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+<!--Game Board-->
+		<div class="row">
+		<div class="col s12 m12 l12">
+			<div id="game-board">
+				<div id="button-1-container" class="button-container">
+					<div id="button-1" class="button"></div>
+				</div>
+				<div id="button-2-container" class="button-container">
+					<div id="button-2" class="button"></div>
+				</div>
+				<div id="current"><div id="inner-current">0</div></div>
+				<div id="button-3-container" class="button-container">
+					<div id="button-3" class="button"></div>
+				</div>
+				<div id="button-4-container" class="button-container">
+					<div id="button-4" class="button"></div>
+				</div>
+			</div>
+			</div>
+		</div>
 	</div>
+	<footer>Created by Liam Robinson</footer>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>

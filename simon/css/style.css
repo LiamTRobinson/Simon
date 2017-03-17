@@ -1,57 +1,18 @@
 body {
-	background-image: url("images/bodyback.jpeg");
+	background-image: url("../images/bodyback.jpeg");
 	background-size: cover;
-}
-
-audio {
-	max-width: 65px;
-}
-
-nav {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	background: rgba(0,0,200, .3);
-	height: 40px;
-	margin: 10px;
 }
 
 input {
 	margin: 5px 0 5px 0;
 }
 
-#dropdown {
-	position: relative;
-}
-
-#scoreboard-container {
-	position: absolute;
-	background: rgba(1,1,1,.5);
-	width: 250px;
-	display: none;
-	border-radius: 0 0 20% 20%;
-}
-
-.scoreboard {
-	color: aquamarine;
-	font-size: 20px;
+a {
 	text-align: center;
 }
 
-#second-place {
-	font-size: 18px;
-}
-
-#third-place {
-	font-size: 16px;
-}
-
-#fourth-place {
-	font-size: 14px;
-}
-
-#highscore {
-	font-size: 25px;
+.nav-wrapper {
+	background: darksalmon;
 }
 
 #userName {
@@ -62,18 +23,6 @@ input {
 
 #fifth-place {
 	font-size: 12px;
-}
-
-#bodywrap {
-	background: rgba(0,0,0,.2);
-	width: 100%;
-	height: 100%;
-}
-
-.nav {
-	height: 60%;
-	border-radius: 10%;
-	background: lightseagreen;
 }
 
 h1 {
@@ -158,10 +107,6 @@ footer {
 	color: white;
 }
 
-#new-game-container {
-	text-align: center;
-}
-
 #current {
 	width: 100%;
 	height: 0px;
@@ -208,7 +153,7 @@ footer {
 }
 
 #game-board {
-	margin: 100px auto;
+	margin: 10% auto;
 	height: 500px;
 	width: 75%;
 	display: flex;
