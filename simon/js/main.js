@@ -345,4 +345,5 @@ $(function(){
 	$("#button-3").on("click", EventHandlers.clickThree);
 	$("#button-4").on("click", EventHandlers.clickFour);
 	$("#high-scores").on("click", ViewControl.showAndHideHighScores);
+	$(".button-collapse").sideNav();
 })

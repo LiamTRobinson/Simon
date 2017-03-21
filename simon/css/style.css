@@ -1,28 +1,7 @@
+/*BODY*/
 body {
 	background-image: url("../images/bodyback.jpeg");
 	background-size: cover;
-}
-
-input {
-	margin: 5px 0 5px 0;
-}
-
-a {
-	text-align: center;
-}
-
-.nav-wrapper {
-	background: darksalmon;
-}
-
-#userName {
-	width: 50%;
-	height: 30px;
-	font-size: 25px;
-}
-
-#fifth-place {
-	font-size: 12px;
 }
 
 h1 {
@@ -32,8 +11,40 @@ h1 {
 	letter-spacing: 5px;
 }
 
+
+/*NAV*/
+a {
+	text-align: center;
+}
+
+.nav-wrapper {
+	background: darksalmon;
+}
+
+.side-nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.side-nav a {
+	text-align: left;
+}
+
+
+/*MODAL*/
 h2 {
 	font-size: 50px;
+}
+
+input {
+	margin: 5px 0 5px 0;
+}
+
+#userName {
+	width: 50%;
+	height: 30px;
+	font-size: 25px;
 }
 
 #modal {
@@ -91,6 +102,10 @@ h2 {
 	font-size: 30px;
 }
 
+#score {
+	font-size: 50px;
+}
+
 #instructions {
 	text-align: center;
 	color: white;
@@ -98,22 +113,15 @@ h2 {
 	margin: 0 auto;
 }
 
-#score {
-	font-size: 50px;
-}
 
-footer {
-	text-align: center;
-	color: white;
-}
-
+/*GAME BOARD*/
 #current {
 	width: 100%;
 	height: 0px;
 	position: relative;
-	bottom: 7%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	z-index: 1;
 }
 
@@ -127,10 +135,12 @@ footer {
 }
 
 #inner-current {
-	width: 70px;
-	height: 70px;
+	width: 10vw;
+	height: 10vw;
+	max-width: 70px;
+	max-height: 70px;
 	background: darksalmon;
-	font-size: 40px;
+	font-size: 3em;
 	z-index: 2;
 	color: black;
 	display: flex;
@@ -154,13 +164,14 @@ footer {
 
 #game-board {
 	margin: 10% auto;
-	height: 500px;
-	width: 75%;
+	height: 75vw;
+	width: 75vw;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
 	max-width: 500px;
+	max-height: 500px;
 	animation-name: ;
 	animation-iteration-count: infinite;
 	animation-duration: 5s;
@@ -218,4 +229,11 @@ footer {
 #button-4 {
 	background: radial-gradient(ellipse at bottom right, #faf096 0%,#fefcea 0%,#e2ca10 100%);
 	border-radius: 0 50% 10% 50%;
+}
+
+
+/*FOOTER*/
+footer {
+	text-align: center;
+	color: white;
 }
