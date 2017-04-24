@@ -2,21 +2,42 @@
 <html>
 <head>
 	<title>Chill Games</title>
+	<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+	<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="simon/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<script
+  		src="https://code.jquery.com/jquery-3.1.1.min.js"
+  		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  		crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="homepage/style.css">
 </head>
-<body>
-	<audio controls autoplay="true">
-		<source src="homepage/bg.mp3">
-	</audio>
-	<h1>Chill Games</h1>
-	<p><em>"Whoa dude, these games are chill af."</em></p>
-	<p id="tj">---Thomas Jefferson</p>
-	<h2>Pick a game to play:</h2>
-	<div id="games-container">
-	<a href="simon/simon.html"><div id="simon"><span>PerSimon</span></div></a>
-	<a href="connectFour/connectFour.html"><div id="connect-four"><span>Kinect Four</span></div></a>	
+<body class="container">
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<h1>Chill Games</h1>
+			<p><em>"Whoa dude, these games are chill af."</em></p>
+			<p id="tj">---Thomas Jefferson</p>
+		</div>
+	</div>
+	<div class="col s12 m12 l12">
+		<h2>Pick a game to play:</h2>
+	</div>
+	<div id="games-container" class="row">
+		<div class="col s12 m12 l6">
+			<a href="simon/simon.html"><div id="simon"><span>PerSimon</span></div></a>
+		</div>
+		<div class="col s12 m12 l6">
+			<a href="connectFour/connectFour.html"><div id="connect-four"><span>Kinect Four</span></div></a>
+		</div>	
 	</div>
 	<footer>Created by Liam Robinson</footer>
+	<script type="text/javascript" src="simon/js/materialize.min.js"></script>
 </body>
 </html>

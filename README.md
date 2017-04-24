@@ -1,22 +1,25 @@
-This project ended up moving beyond the scope of Simon.  I added a connect four clone after making Simon pretty.
-The homepage contains links to each game.
-PerSimon (since my Simon clone looks like a flower) has multiple difficulty options and a high score board with 5 slots.
-Kinect Four has one and two player game modes, a score tracker, custom player names, and a score reset.
-I wanted to make these games feel very relaxed and each has it's own theme music that the user can toggle on and off.
+# Inception and Purpose
 
-In order to complete this project I used three songs:
-Cliffs by Aphex Twin,
-A Paw in My Face by The Field,
-1/2 by Brian Eno.
+This project was developed for General Assembly's Web Development Intensive program.  This was the first project and an inndividual one.  The goal was to make a single page game.  The game I initially chose to make was Simon.  I finished Simon with some time to spare and decided to work on a second game, Connect Four.  I wanted the theme of these games to be relaxing, so I called the collection "Chill Games".
 
-I also used jquery in this project.
+# Synopsis
 
-The live page can be found at: https://liamtrobinson.github.io/Simon/index.html
+In PerSimon (name due to the flower-like shape), a user chooses a difficulty level to begin the game and then attempts to replicate the computer's actions by clicking on the "petals" in the same sequence as the computer.  The final score is modified based on the difficulty level of the game.  The game keeps track of the top 5 high scores, though they do not persist past page refresh.  I put my own "spin" on the game with the expert level, where the game board spins around the center.
 
-My trello board can be found at: https://trello.com/b/iZuQWMaL/simon
+In KinectFour, a user can choose to play against another user locally or play against the AI I designed to play the game.  The game is played by each player alternating turns, choosing a valid move each turn.  A move is made by clicking on the column in which you would like to drop your piece, and it falls all the way to the bottom.  The winner is the first one to connect four of their pieces either vertically, horizontally, or diagonally.  The game keeps track of each player's total wins and has the ability to reset these numbers.  User's can also input their names in place of "Player 1" and "Player 2".  I am quite proud of the AI as it has beaten me a few times (though I'm not sure if that is a testament to its intelligence or my lack-there-of!).
 
-Here are some pictures of my planning process:
+# Planning
 
-![Alt text](Photo on 3-9-17 at 4.30 PM.jpg?raw=true "Optional Title")
+I used [Trello](https://trello.com/b/iZuQWMaL/simon) to keep myself organized and on track.
 
-![Alt text](Screen Shot 2017-03-10 at 9.36.14 AM 2.png?raw=true "Optional Title")
+My initial wireframe:
+
+![Alt text](./wire_frame.jpg)
+
+My initial planning process:
+
+![Alt text](./planning.png)
+
+# More On This Project And Me
+
+I am a passionate problem solver and JavaScript coder.  The live page for this project can be found [HERE](https://liamtrobinson.github.io/Simon/index.html), so please go play a few games and let me know what you think!  If you are interested in learning more about me, you can check out my other repositories or visit my [profile page](http://gunner-lizard-82827.bitballoon.com/).  Thanks for reading and feel free to pull or give any feedback.

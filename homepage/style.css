@@ -1,4 +1,4 @@
-@keyframes spin {
+/*@keyframes spin {
 	from {
 		transform: rotate(0deg);
 	}
@@ -62,13 +62,6 @@ a {
 	text-decoration: none;
 }
 
-audio {
-	position: fixed;
-	top: 0;
-	left: 0;
-	max-width: 70px;
-}
-
 #simon {
 	background: url("images/bodyback.jpeg");
 	background-size: cover;
@@ -115,4 +108,8 @@ audio {
 #games-container {
 	display: flex;
 	justify-content: space-around;
+}*/
+
+body {
+	background-image: url("images/bg.png");
 }
