@@ -20,10 +20,19 @@ My initial planning process:
 
 ![Alt text](./planning.png)
 
+# Technology Used
+
+	* HTML5/CSS
+	* Materialize CSS
+	* JavaScript
+	* Jquery
+	* Github/Github Pages
+	* Trello
+
 # To Do
 
 I would like to make the site more responsive, clean up the styling on KinectFour, persist the high scores on PerSimon, and adjust the audio levels.
 
-# More On This Project And Me
+# More On This Project and Me
 
 I am a passionate problem solver and JavaScript coder.  The live page for this project can be found [HERE](https://liamtrobinson.github.io/Simon/index.html), so please go play a few games and let me know what you think!  If you are interested in learning more about me, you can check out my other repositories or visit my [profile page](http://gunner-lizard-82827.bitballoon.com/).  Thanks for reading and feel free to pull or give any feedback.
