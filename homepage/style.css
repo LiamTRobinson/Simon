@@ -1,4 +1,4 @@
-/*@keyframes spin {
+@keyframes spin {
 	from {
 		transform: rotate(0deg);
 	}
@@ -108,7 +108,7 @@ a {
 #games-container {
 	display: flex;
 	justify-content: space-around;
-}*/
+}
 
 body {
 	background-image: url("images/bg.png");
